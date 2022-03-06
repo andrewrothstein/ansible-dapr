@@ -54,4 +54,3 @@
     src: '{{ dapr_install_exe }}'
     dest: '{{ dapr_link }}'
     state: link
-
