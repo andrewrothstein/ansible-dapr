@@ -1,0 +1,57 @@
+---
+- name: resolve platform specific vars
+  include_vars: '{{ item }}'
+  with_first_found:
+    - files:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+      skip: true
+      paths:
+        - '{{ role_path }}/vars'
+- name: looking for install at {{ dapr_install_exe }}
+  become: true
+  stat:
+    path: '{{ dapr_install_exe }}'
+  changed_when: false
+  register: dapr_binary
+- when: not dapr_binary.stat.exists
+  block:
+    - name: downloading {{ dapr_url }} to {{ dapr_tmp_archive }}
+      become: true
+      become_user: root
+      get_url:
+        url: '{{ dapr_url }}'
+        dest: '{{ dapr_tmp_archive }}'
+        checksum: '{{ dapr_checksum }}'
+        mode: 0644
+    - name: mkdir {{ dapr_install_dir }}
+      become: true
+      become_user: root
+      file:
+        path: '{{ dapr_install_dir }}'
+        state: directory
+        mode: 0755
+    - name: unarchiving {{ dapr_tmp_archive }} to {{ dapr_install_dir }}
+      become: true
+      become_user: root
+      unarchive:
+        remote_src: true
+        src: '{{ dapr_tmp_archive }}'
+        dest: '{{ dapr_install_dir }}'
+        creates: '{{ dapr_install_exe }}'
+  always:
+    - name: rm -f {{ dapr_tmp_archive }}
+      become: true
+      become_user: root
+      file:
+        path: '{{ dapr_tmp_archive }}'
+        state: absent
+- name: linking {{ dapr_link }} to {{ dapr_install_exe }}
+  become: true
+  become_user: root
+  file:
+    src: '{{ dapr_install_exe }}'
+    dest: '{{ dapr_link }}'
+    state: link
+

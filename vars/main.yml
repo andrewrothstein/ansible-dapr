@@ -1,0 +1,11 @@
+---
+# vars file for dapr
+dapr_platform: '{{ dapr_os }}_{{ dapr_arch }}'
+dapr_url: '{{ dapr_mirror }}/v{{ dapr_ver }}/dapr_{{ dapr_platform }}.{{ dapr_archive_type | default("tar.gz") }}'
+dapr_name: dapr_{{ dapr_ver }}_{{ dapr_platform }}
+dapr_archive: '{{ dapr_name }}.{{ dapr_archive_type | default("tar.gz") }}'
+dapr_tmp_archive: /tmp/{{ dapr_archive }}
+dapr_checksum: '{{ dapr_checksums[dapr_ver][dapr_platform] }}'
+dapr_install_dir: '{{ dapr_parent_install_dir }}/{{ dapr_name }}'
+dapr_install_exe: '{{ dapr_install_dir }}/dapr'
+dapr_link: '{{ dapr_parent_install_dir }}/bin/dapr'
