@@ -112,6 +112,7 @@ func main() {
 
 	versions := []Ver{
 		{Major: 1, Minor: 6, Patch: 0},
+		{Major:1, Minor: 7, Patch: 0},
 	}
 	dl(&params, "dapr", versions, platforms)
 }
