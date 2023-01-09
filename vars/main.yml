@@ -1,5 +1,7 @@
 ---
 # vars file for dapr
+dapr_os: '{{ ansible_system | lower }}'
+dapr_arch: '{{ dapr_arch_map[ansible_architecture] }}'
 dapr_platform: '{{ dapr_os }}_{{ dapr_arch }}'
 dapr_url: '{{ dapr_mirror }}/v{{ dapr_ver }}/dapr_{{ dapr_platform }}.{{ dapr_archive_type | default("tar.gz") }}'
 dapr_name: dapr_{{ dapr_ver }}_{{ dapr_platform }}
