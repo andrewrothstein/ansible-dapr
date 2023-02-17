@@ -116,6 +116,7 @@ func main() {
 		{Major:1, Minor: 8, Patch: 0},
 		{Major:1, Minor: 9, Patch: 0},
 		{Major:1, Minor: 9, Patch: 1},
+		{Major:1, Minor: 10, Patch: 0},
 	}
 	dl(&params, "dapr", versions, platforms)
 }
