@@ -1,7 +1,7 @@
 ---
 # defaults file for dapr
 dapr_mirror: https://github.com/dapr/cli/releases/download
-dapr_ver: 1.11.0
+dapr_ver: 1.12.0
 dapr_arch_map:
   aarch64: arm64
   arm64: arm64
@@ -99,3 +99,16 @@ dapr_checksums:
     linux_arm64: sha256:9d7bcd5ee7b86a5263813ba1436330b8916ae919b66a4e89973a5f193e9f26b0
     # https://github.com/dapr/cli/releases/download/v1.11.0/dapr_windows_amd64.zip.sha256
     windows_amd64: sha256:8da886096c88ea075137b014e376241d59fd1c1c3ddf43137a02b1342f60e663
+  '1.12.0':
+    # https://github.com/dapr/cli/releases/download/v1.12.0/dapr_darwin_amd64.tar.gz.sha256
+    darwin_amd64: sha256:cc8854dca108199dc2b21cd8f5caca2b87707bf8acbac9940668de05a9e6df4c
+    # https://github.com/dapr/cli/releases/download/v1.12.0/dapr_darwin_arm64.tar.gz.sha256
+    darwin_arm64: sha256:c8a3f14f1482ec353514d7f307b1509fbe2ac36c98529a5baca86484130d750c
+    # https://github.com/dapr/cli/releases/download/v1.12.0/dapr_linux_amd64.tar.gz.sha256
+    linux_amd64: sha256:8def36381fbd6fcf039f4f9e9d3c1dceaa725fda5ffc4a1e95a63426c7e39776
+    # https://github.com/dapr/cli/releases/download/v1.12.0/dapr_linux_arm.tar.gz.sha256
+    linux_arm: sha256:31f62142832d4cb9780411f145f76ab473fc899e2292fea81a86810ea2fd4c0b
+    # https://github.com/dapr/cli/releases/download/v1.12.0/dapr_linux_arm64.tar.gz.sha256
+    linux_arm64: sha256:7a5a465d339c601de65807ce45573fd2267c45c0c5327b83f6eee1d0d10fa69d
+    # https://github.com/dapr/cli/releases/download/v1.12.0/dapr_windows_amd64.zip.sha256
+    windows_amd64: sha256:4fc7da58c76151d27f6c711637c5acc57864a27dd5740cf16be0338e64bd0aff
